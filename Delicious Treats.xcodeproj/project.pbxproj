@@ -7,14 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01052D2DCD600C08B141ED92 /* Pods_Delicious_TreatsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F746360CA819AC29174C08DB /* Pods_Delicious_TreatsUITests.framework */; };
+		50A830D8BB597CA320D7A57C /* Pods_Delicious_Treats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1E426482FEFFCF4928EB1B /* Pods_Delicious_Treats.framework */; };
+		A07B26AB1F22827D00B18106 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07B26AA1F22827D00B18106 /* SWRevealViewController.m */; };
+		A07B26AE1F22928F00B18106 /* CatalogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26AD1F22928F00B18106 /* CatalogTableViewController.swift */; };
+		A07B26B01F2294F600B18106 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26AF1F2294F600B18106 /* MenuViewController.swift */; };
+		A07B26B41F22966200B18106 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26B31F22966200B18106 /* ContactsTableViewCell.swift */; };
+		A07B26B61F22966E00B18106 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26B51F22966E00B18106 /* ContactsTableViewController.swift */; };
+		A07B26BB1F229D3900B18106 /* CatalogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26BA1F229D3900B18106 /* CatalogTableViewCell.swift */; };
+		A07B26BD1F229FC200B18106 /* FoodListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26BC1F229FC200B18106 /* FoodListTableViewCell.swift */; };
+		A07B26BF1F229FCE00B18106 /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26BE1F229FCE00B18106 /* FoodListTableViewController.swift */; };
+		A07B26C11F22A15700B18106 /* FoodDiscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26C01F22A15700B18106 /* FoodDiscriptionViewController.swift */; };
+		A07B270B1F240D6F00B18106 /* XMLGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B270A1F240D6F00B18106 /* XMLGetter.swift */; };
+		A07B270D1F240E6700B18106 /* Shop.xml in Resources */ = {isa = PBXBuildFile; fileRef = A07B270C1F240E6700B18106 /* Shop.xml */; };
+		A07B270F1F24138F00B18106 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B270E1F24138F00B18106 /* TestViewController.swift */; };
 		A0F643F01F224E430023A9B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F643EF1F224E430023A9B0 /* AppDelegate.swift */; };
-		A0F643F21F224E430023A9B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F643F11F224E430023A9B0 /* ViewController.swift */; };
 		A0F643F51F224E430023A9B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F643F31F224E430023A9B0 /* Main.storyboard */; };
 		A0F643F81F224E430023A9B0 /* Delicious_Treats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0F643F61F224E430023A9B0 /* Delicious_Treats.xcdatamodeld */; };
 		A0F643FA1F224E430023A9B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0F643F91F224E430023A9B0 /* Assets.xcassets */; };
 		A0F643FD1F224E430023A9B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F643FB1F224E430023A9B0 /* LaunchScreen.storyboard */; };
 		A0F644081F224E430023A9B0 /* Delicious_TreatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F644071F224E430023A9B0 /* Delicious_TreatsTests.swift */; };
 		A0F644131F224E430023A9B0 /* Delicious_TreatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F644121F224E430023A9B0 /* Delicious_TreatsUITests.swift */; };
+		CA1317EAF3F5F10727AF1EA5 /* Pods_Delicious_TreatsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 562F0A484EFD966F3CAF125D /* Pods_Delicious_TreatsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,9 +49,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04F70EE93170471224C09CD5 /* Pods-Delicious TreatsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delicious TreatsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Delicious TreatsUITests/Pods-Delicious TreatsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		219C77FE924C6C07BFD1ABCA /* Pods-Delicious TreatsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delicious TreatsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Delicious TreatsUITests/Pods-Delicious TreatsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		263C96B71BA7B5E381227FE1 /* Pods-Delicious TreatsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delicious TreatsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Delicious TreatsTests/Pods-Delicious TreatsTests.release.xcconfig"; sourceTree = "<group>"; };
+		562F0A484EFD966F3CAF125D /* Pods_Delicious_TreatsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Delicious_TreatsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E1E426482FEFFCF4928EB1B /* Pods_Delicious_Treats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Delicious_Treats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9791C9D405CC414159E9EBC4 /* Pods-Delicious TreatsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delicious TreatsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Delicious TreatsTests/Pods-Delicious TreatsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A07B26A81F22827C00B18106 /* Delicious Treats-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Delicious Treats-Bridging-Header.h"; sourceTree = "<group>"; };
+		A07B26A91F22827D00B18106 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		A07B26AA1F22827D00B18106 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		A07B26AD1F22928F00B18106 /* CatalogTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogTableViewController.swift; sourceTree = "<group>"; };
+		A07B26AF1F2294F600B18106 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		A07B26B31F22966200B18106 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
+		A07B26B51F22966E00B18106 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		A07B26BA1F229D3900B18106 /* CatalogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogTableViewCell.swift; sourceTree = "<group>"; };
+		A07B26BC1F229FC200B18106 /* FoodListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewCell.swift; sourceTree = "<group>"; };
+		A07B26BE1F229FCE00B18106 /* FoodListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewController.swift; sourceTree = "<group>"; };
+		A07B26C01F22A15700B18106 /* FoodDiscriptionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodDiscriptionViewController.swift; sourceTree = "<group>"; };
+		A07B270A1F240D6F00B18106 /* XMLGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLGetter.swift; sourceTree = "<group>"; };
+		A07B270C1F240E6700B18106 /* Shop.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Shop.xml; sourceTree = "<group>"; };
+		A07B270E1F24138F00B18106 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		A0F643EC1F224E430023A9B0 /* Delicious Treats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Delicious Treats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F643EF1F224E430023A9B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A0F643F11F224E430023A9B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A0F643F41F224E430023A9B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0F643F71F224E430023A9B0 /* Delicious_Treats.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Delicious_Treats.xcdatamodel; sourceTree = "<group>"; };
 		A0F643F91F224E430023A9B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +82,9 @@
 		A0F6440E1F224E430023A9B0 /* Delicious TreatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Delicious TreatsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F644121F224E430023A9B0 /* Delicious_TreatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delicious_TreatsUITests.swift; sourceTree = "<group>"; };
 		A0F644141F224E430023A9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE326485D6B080C0C8BE398F /* Pods-Delicious Treats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delicious Treats.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Delicious Treats/Pods-Delicious Treats.debug.xcconfig"; sourceTree = "<group>"; };
+		CBB503DBFDAE11185AC642DB /* Pods-Delicious Treats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delicious Treats.release.xcconfig"; path = "Pods/Target Support Files/Pods-Delicious Treats/Pods-Delicious Treats.release.xcconfig"; sourceTree = "<group>"; };
+		F746360CA819AC29174C08DB /* Pods_Delicious_TreatsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Delicious_TreatsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50A830D8BB597CA320D7A57C /* Pods_Delicious_Treats.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA1317EAF3F5F10727AF1EA5 /* Pods_Delicious_TreatsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,19 +108,88 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01052D2DCD600C08B141ED92 /* Pods_Delicious_TreatsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		101A6D3795258A61B823B099 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE326485D6B080C0C8BE398F /* Pods-Delicious Treats.debug.xcconfig */,
+				CBB503DBFDAE11185AC642DB /* Pods-Delicious Treats.release.xcconfig */,
+				9791C9D405CC414159E9EBC4 /* Pods-Delicious TreatsTests.debug.xcconfig */,
+				263C96B71BA7B5E381227FE1 /* Pods-Delicious TreatsTests.release.xcconfig */,
+				219C77FE924C6C07BFD1ABCA /* Pods-Delicious TreatsUITests.debug.xcconfig */,
+				04F70EE93170471224C09CD5 /* Pods-Delicious TreatsUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		49C8EF3426A2AEAEDA2E3309 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7E1E426482FEFFCF4928EB1B /* Pods_Delicious_Treats.framework */,
+				562F0A484EFD966F3CAF125D /* Pods_Delicious_TreatsTests.framework */,
+				F746360CA819AC29174C08DB /* Pods_Delicious_TreatsUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A07B26AC1F2283D500B18106 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0F644061F224E430023A9B0 /* Delicious TreatsTests */,
+				A07B26A81F22827C00B18106 /* Delicious Treats-Bridging-Header.h */,
+				A07B26A91F22827D00B18106 /* SWRevealViewController.h */,
+				A07B26AA1F22827D00B18106 /* SWRevealViewController.m */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A07B26B71F22968B00B18106 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				A07B26AF1F2294F600B18106 /* MenuViewController.swift */,
+				A0F643F91F224E430023A9B0 /* Assets.xcassets */,
+				A0F643FB1F224E430023A9B0 /* LaunchScreen.storyboard */,
+				A0F643FE1F224E430023A9B0 /* Info.plist */,
+				A0F643F61F224E430023A9B0 /* Delicious_Treats.xcdatamodeld */,
+			);
+			name = "Support Files";
+			sourceTree = "<group>";
+		};
+		A07B26B81F2296A100B18106 /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				A07B26AD1F22928F00B18106 /* CatalogTableViewController.swift */,
+				A07B26BA1F229D3900B18106 /* CatalogTableViewCell.swift */,
+				A07B26BE1F229FCE00B18106 /* FoodListTableViewController.swift */,
+				A07B26BC1F229FC200B18106 /* FoodListTableViewCell.swift */,
+				A07B26C01F22A15700B18106 /* FoodDiscriptionViewController.swift */,
+			);
+			name = Catalog;
+			sourceTree = "<group>";
+		};
+		A07B26B91F2296A700B18106 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				A07B26B51F22966E00B18106 /* ContactsTableViewController.swift */,
+				A07B26B31F22966200B18106 /* ContactsTableViewCell.swift */,
+			);
+			name = Contacts;
+			sourceTree = "<group>";
+		};
 		A0F643E31F224E430023A9B0 = {
 			isa = PBXGroup;
 			children = (
 				A0F643EE1F224E430023A9B0 /* Delicious Treats */,
-				A0F644061F224E430023A9B0 /* Delicious TreatsTests */,
 				A0F644111F224E430023A9B0 /* Delicious TreatsUITests */,
 				A0F643ED1F224E430023A9B0 /* Products */,
+				101A6D3795258A61B823B099 /* Pods */,
+				49C8EF3426A2AEAEDA2E3309 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,12 +207,14 @@
 			isa = PBXGroup;
 			children = (
 				A0F643EF1F224E430023A9B0 /* AppDelegate.swift */,
-				A0F643F11F224E430023A9B0 /* ViewController.swift */,
 				A0F643F31F224E430023A9B0 /* Main.storyboard */,
-				A0F643F91F224E430023A9B0 /* Assets.xcassets */,
-				A0F643FB1F224E430023A9B0 /* LaunchScreen.storyboard */,
-				A0F643FE1F224E430023A9B0 /* Info.plist */,
-				A0F643F61F224E430023A9B0 /* Delicious_Treats.xcdatamodeld */,
+				A07B26B81F2296A100B18106 /* Catalog */,
+				A07B26B91F2296A700B18106 /* Contacts */,
+				A07B26B71F22968B00B18106 /* Support Files */,
+				A07B26AC1F2283D500B18106 /* Frameworks */,
+				A07B270A1F240D6F00B18106 /* XMLGetter.swift */,
+				A07B270E1F24138F00B18106 /* TestViewController.swift */,
+				A07B270C1F240E6700B18106 /* Shop.xml */,
 			);
 			path = "Delicious Treats";
 			sourceTree = "<group>";
@@ -117,7 +226,7 @@
 				A0F644091F224E430023A9B0 /* Info.plist */,
 			);
 			path = "Delicious TreatsTests";
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		A0F644111F224E430023A9B0 /* Delicious TreatsUITests */ = {
 			isa = PBXGroup;
@@ -135,9 +244,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0F644171F224E430023A9B0 /* Build configuration list for PBXNativeTarget "Delicious Treats" */;
 			buildPhases = (
+				E48DBA907B47452266E63BA5 /* [CP] Check Pods Manifest.lock */,
 				A0F643E81F224E430023A9B0 /* Sources */,
 				A0F643E91F224E430023A9B0 /* Frameworks */,
 				A0F643EA1F224E430023A9B0 /* Resources */,
+				EEAB94E8218B01DD5C8C67DB /* [CP] Embed Pods Frameworks */,
+				9AECE0A89EFF97261ADF4617 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +264,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0F6441A1F224E430023A9B0 /* Build configuration list for PBXNativeTarget "Delicious TreatsTests" */;
 			buildPhases = (
+				03AD3AD6A15DE200C263EA2C /* [CP] Check Pods Manifest.lock */,
 				A0F643FF1F224E430023A9B0 /* Sources */,
 				A0F644001F224E430023A9B0 /* Frameworks */,
 				A0F644011F224E430023A9B0 /* Resources */,
+				5A3E05B7218324BA734DABC0 /* [CP] Embed Pods Frameworks */,
+				A69F93C6A7BF0B8B3D61A5B7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +285,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0F6441D1F224E430023A9B0 /* Build configuration list for PBXNativeTarget "Delicious TreatsUITests" */;
 			buildPhases = (
+				65BD0D3FD01E253BC27BA82C /* [CP] Check Pods Manifest.lock */,
 				A0F6440A1F224E430023A9B0 /* Sources */,
 				A0F6440B1F224E430023A9B0 /* Frameworks */,
 				A0F6440C1F224E430023A9B0 /* Resources */,
+				573D45B8EAAFF5FFCE7DC3F6 /* [CP] Embed Pods Frameworks */,
+				7376B7A404F3EF40CB329E17 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,6 +314,8 @@
 				TargetAttributes = {
 					A0F643EB1F224E430023A9B0 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 5YVMX8TY6Q;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					A0F644021F224E430023A9B0 = {
@@ -236,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0F643FD1F224E430023A9B0 /* LaunchScreen.storyboard in Resources */,
+				A07B270D1F240E6700B18106 /* Shop.xml in Resources */,
 				A0F643FA1F224E430023A9B0 /* Assets.xcassets in Resources */,
 				A0F643F51F224E430023A9B0 /* Main.storyboard in Resources */,
 			);
@@ -257,14 +378,162 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03AD3AD6A15DE200C263EA2C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		573D45B8EAAFF5FFCE7DC3F6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Delicious TreatsUITests/Pods-Delicious TreatsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A3E05B7218324BA734DABC0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Delicious TreatsTests/Pods-Delicious TreatsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65BD0D3FD01E253BC27BA82C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7376B7A404F3EF40CB329E17 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Delicious TreatsUITests/Pods-Delicious TreatsUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9AECE0A89EFF97261ADF4617 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Delicious Treats/Pods-Delicious Treats-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A69F93C6A7BF0B8B3D61A5B7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Delicious TreatsTests/Pods-Delicious TreatsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E48DBA907B47452266E63BA5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EEAB94E8218B01DD5C8C67DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Delicious Treats/Pods-Delicious Treats-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A0F643E81F224E430023A9B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A07B26B41F22966200B18106 /* ContactsTableViewCell.swift in Sources */,
+				A07B26BF1F229FCE00B18106 /* FoodListTableViewController.swift in Sources */,
+				A07B270B1F240D6F00B18106 /* XMLGetter.swift in Sources */,
 				A0F643F81F224E430023A9B0 /* Delicious_Treats.xcdatamodeld in Sources */,
-				A0F643F21F224E430023A9B0 /* ViewController.swift in Sources */,
+				A07B26B01F2294F600B18106 /* MenuViewController.swift in Sources */,
+				A07B270F1F24138F00B18106 /* TestViewController.swift in Sources */,
+				A07B26C11F22A15700B18106 /* FoodDiscriptionViewController.swift in Sources */,
+				A07B26BB1F229D3900B18106 /* CatalogTableViewCell.swift in Sources */,
 				A0F643F01F224E430023A9B0 /* AppDelegate.swift in Sources */,
+				A07B26AE1F22928F00B18106 /* CatalogTableViewController.swift in Sources */,
+				A07B26BD1F229FC200B18106 /* FoodListTableViewCell.swift in Sources */,
+				A07B26B61F22966E00B18106 /* ContactsTableViewController.swift in Sources */,
+				A07B26AB1F22827D00B18106 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,30 +683,40 @@
 		};
 		A0F644181F224E430023A9B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE326485D6B080C0C8BE398F /* Pods-Delicious Treats.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 5YVMX8TY6Q;
 				INFOPLIST_FILE = "Delicious Treats/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "VladShilov.Delicious-Treats";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Delicious Treats/Delicious Treats-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		A0F644191F224E430023A9B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBB503DBFDAE11185AC642DB /* Pods-Delicious Treats.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 5YVMX8TY6Q;
 				INFOPLIST_FILE = "Delicious Treats/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "VladShilov.Delicious-Treats";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Delicious Treats/Delicious Treats-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		A0F6441B1F224E430023A9B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9791C9D405CC414159E9EBC4 /* Pods-Delicious TreatsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -452,6 +731,7 @@
 		};
 		A0F6441C1F224E430023A9B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 263C96B71BA7B5E381227FE1 /* Pods-Delicious TreatsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -466,6 +746,7 @@
 		};
 		A0F6441E1F224E430023A9B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 219C77FE924C6C07BFD1ABCA /* Pods-Delicious TreatsUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Delicious TreatsUITests/Info.plist";
@@ -479,6 +760,7 @@
 		};
 		A0F6441F1F224E430023A9B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04F70EE93170471224C09CD5 /* Pods-Delicious TreatsUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = "Delicious TreatsUITests/Info.plist";
@@ -509,6 +791,7 @@
 				A0F644191F224E430023A9B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A0F6441A1F224E430023A9B0 /* Build configuration list for PBXNativeTarget "Delicious TreatsTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +800,7 @@
 				A0F6441C1F224E430023A9B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A0F6441D1F224E430023A9B0 /* Build configuration list for PBXNativeTarget "Delicious TreatsUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +809,7 @@
 				A0F6441F1F224E430023A9B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
