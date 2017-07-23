@@ -42,7 +42,7 @@ class XMLGetter{
     var categoryID = ""
     var categoryName = ""
     
-    var entity = [Entity]()
+    //var categoryEntity = [Category]()
     var managedObjectContext : NSManagedObjectContext!
     
     
@@ -93,7 +93,7 @@ class XMLGetter{
                         
                         self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
 
-                        let entityItem = Entity(context: self.managedObjectContext)
+                        let entityItem = Category(context: self.managedObjectContext)
                         entityItem.id = self.categoryID
                         entityItem.name = self.categoryName
                         
@@ -114,6 +114,10 @@ class XMLGetter{
                     
                     self.delegate.didGetCategory(self.parsedCategoryArray)
                     
+                    print("\nITIS")
+                    print((xmlDoc?.root["shop"]["offers"]["offer"].all!.count)!)
+                    print("")
+                    
                     for categories in (xmlDoc?.root["shop"]["offers"]["offer"].all!)! {
                         self.offerName = categories.children[1].value!
                         self.offerPrice = categories.children[2].value!
@@ -130,6 +134,28 @@ class XMLGetter{
                                 self.offerWeight = categories.children[index].value!
                             }
                         }
+                        
+                        //Добавление в КорДату--------------------------------------
+                        
+                        //self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+                        
+                        let entityItem = Offer(context: self.managedObjectContext)
+                        entityItem.id = self.offerID
+                        entityItem.name = self.offerName
+                        if !self.offerDescription.isEmpty{
+                            entityItem.desc = self.offerDescription
+                        }
+                        entityItem.price = self.offerPrice
+                        entityItem.weight = self.offerWeight
+                        entityItem.url = self.offerPictureURL
+                        
+                        do {
+                            try self.managedObjectContext.save()
+                        }catch{
+                            print("Couldnt save data \(error.localizedDescription)")
+                        }
+                        
+                        //-----------------------------------------------------------
                         
                         //Добавление в структуру
                         let newOffer = ParsedOffer(name: self.offerName, price: self.offerPrice, description: self.offerDescription, pictureURL: self.offerPictureURL, id: self.offerID, weight: self.offerWeight)
