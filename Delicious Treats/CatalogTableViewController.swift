@@ -14,49 +14,27 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     
     var parsedOfferStruct = [ParsedOffer]()
-    //var parsedCategoryStruct = [ParsedCategory]()
+    var parsedCategoryStruct = [ParsedCategory]()
     var xmlGetter: XMLGetter!
 
     var managedObjectContext : NSManagedObjectContext!
     var categoryEntity = [Category]()
-    
-    lazy var fetchedCategoryResultsController:
-        NSFetchedResultsController<Category> = {
-            let fetchRequest = NSFetchRequest<Category>()
-            let entity = Category.entity()
-            fetchRequest.entity = entity
-            let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
-            fetchRequest.sortDescriptors = [sortDescriptor]
-            fetchRequest.fetchBatchSize = 20
-            let fetchedResultsController = NSFetchedResultsController(
-                fetchRequest: fetchRequest,
-                managedObjectContext: self.managedObjectContext,
-                sectionNameKeyPath: nil,
-                cacheName: "categoryEntity")
-            
-            fetchedResultsController.delegate = self
-            return fetchedResultsController
-    }()
-    
-    deinit {
-        fetchedCategoryResultsController.delegate = nil
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-        
-        do {
-            try fetchedCategoryResultsController.performFetch()
-        } catch {
-            print("Error: \(error)")
-            //fatalCoreDataError(error)
+    
+        let presentRequest:NSFetchRequest<Category> = Category.fetchRequest()
+        do{
+            self.categoryEntity = try self.managedObjectContext.fetch(presentRequest)
+        }catch{
+            print("Couldnt load data from database \(error.localizedDescription)")
         }
         
-        if !(fetchedCategoryResultsController.fetchedObjects?.isEmpty)! {
-            return
+        if !categoryEntity.isEmpty{
+            writeInCategoryStruct()
         }else {
             xmlGetter = XMLGetter(delegate: self)
             xmlGetter.performParseFromLink()
@@ -76,15 +54,54 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
         print("catalog did disappear")
     }
     
+    // MARK: - 
+    
+    func writeInCategoryStruct(){
+        for index in 0...categoryEntity.count-1{
+            let tempCat = ParsedCategory(categoryID: categoryEntity[index].id!, categoryName: categoryEntity[index].name!)
+            parsedCategoryStruct.append(tempCat)
+        }
+    }
+    
     // MARK: - XMLGetter
     func didGetOffer(_ offers: [ParsedOffer]) {
         parsedOfferStruct = offers
+        
+        for object in parsedOfferStruct{
+            let entityItem = Offer(context: managedObjectContext)
+            entityItem.id = object.id
+            entityItem.name = object.name
+            if !object.description.isEmpty{
+                entityItem.desc = object.description
+            }
+            entityItem.price = object.price
+            entityItem.weight = object.weight
+            entityItem.url = object.pictureURL
+        }
+        do {
+            try managedObjectContext.save()
+        }catch{
+            print("Couldnt save data \(error.localizedDescription)")
+        }
     }
     
     func didGetCategory(_ categories: [ParsedCategory]) {
         DispatchQueue.main.async {
+            self.parsedCategoryStruct = categories
             self.tableView.reloadData()
         }
+        
+        for object in categories{
+            let entityItem = Category(context: managedObjectContext)
+            entityItem.id = object.categoryID
+            entityItem.name = object.categoryName
+        }
+        do {
+            try managedObjectContext.save()
+        }catch{
+            print("Couldnt save data \(error.localizedDescription)")
+        }
+        
     }
     
     func didNotGet(_ error: NSError) {
@@ -103,7 +120,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedCategoryResultsController.sections![section].numberOfObjects
+        return parsedCategoryStruct.count
     }
 
     
@@ -111,7 +128,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CatalogTableViewCell
         
         cell?.iconImage.image = UIImage(named: "Test")
-        cell?.categoryNameLabel.text = fetchedCategoryResultsController.object(at: indexPath).name
+        cell?.categoryNameLabel.text = parsedCategoryStruct[indexPath.row].categoryName
 
         return cell!
     }
@@ -120,67 +137,10 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
         if segue.identifier == "FoodList" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let controller = segue.destination as! FoodListTableViewController
-                controller.categoryID = fetchedCategoryResultsController.object(at: indexPath).id!
-                controller.managedObjectContext = managedObjectContext
+                //controller.offersArray = parsedOfferStruct
+                controller.categoryID = parsedCategoryStruct[indexPath.row].categoryID
             }
         }
     }
 
 }
-
-
-//Описание слушателя кор даты. Реагирует на любые изменения в ней, следовательно перересовывает tableView
-extension CatalogTableViewController: NSFetchedResultsControllerDelegate {
-    func controllerWillChangeContent(_ controller:
-        NSFetchedResultsController<NSFetchRequestResult>) {
-        print("*** controllerWillChangeContent")
-        tableView.beginUpdates()
-    }
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange anObject: Any, at indexPath: IndexPath?,
-                    for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
-        switch type {
-        case .insert:
-            print("*** NSFetchedResultsChangeInsert (object)")
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        case .delete:
-            print("*** NSFetchedResultsChangeDelete (object)")
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-        case .update:
-            print("*** NSFetchedResultsChangeUpdate (object)")
-            if let cell = tableView.cellForRow(at: indexPath!)
-                as? CatalogTableViewCell {
-                cell.iconImage.image = UIImage(named: "Test")
-                cell.categoryNameLabel.text = fetchedCategoryResultsController.object(at: indexPath!).name
-            }
-        case .move:
-            print("*** NSFetchedResultsChangeMove (object)")
-            tableView.deleteRows(at: [indexPath!], with: .fade)
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
-        } }
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange sectionInfo: NSFetchedResultsSectionInfo,
-                    atSectionIndex sectionIndex: Int,
-                    for type: NSFetchedResultsChangeType) {
-        
-        switch type {
-        case .insert:
-            print("*** NSFetchedResultsChangeInsert (section)")
-            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .delete:
-            print("*** NSFetchedResultsChangeDelete (section)")
-            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .update:
-            print("*** NSFetchedResultsChangeUpdate (section)")
-        case .move:
-            print("*** NSFetchedResultsChangeMove (section)")
-        }
-    }
-    func controllerDidChangeContent(
-        _ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        print("*** controllerDidChangeContent")
-        tableView.endUpdates()
-    }
-}
-

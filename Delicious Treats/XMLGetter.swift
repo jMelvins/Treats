@@ -91,17 +91,17 @@ class XMLGetter{
                         
                         //Добавление в КорДату--------------------------------------
                         
-                        self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-
-                        let entityItem = Category(context: self.managedObjectContext)
-                        entityItem.id = self.categoryID
-                        entityItem.name = self.categoryName
-                        
-                        do {
-                            try self.managedObjectContext.save()
-                        }catch{
-                            print("Couldnt save data \(error.localizedDescription)")
-                        }
+//                        self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+//
+//                        let entityItem = Category(context: self.managedObjectContext)
+//                        entityItem.id = self.categoryID
+//                        entityItem.name = self.categoryName
+//                        
+//                        do {
+//                            try self.managedObjectContext.save()
+//                        }catch{
+//                            print("Couldnt save data \(error.localizedDescription)")
+//                        }
                         
                         //-----------------------------------------------------------
                         
@@ -136,24 +136,24 @@ class XMLGetter{
                         }
                         
                         //Добавление в КорДату--------------------------------------
-                        
-                        //self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-                        
-                        let entityItem = Offer(context: self.managedObjectContext)
-                        entityItem.id = self.offerID
-                        entityItem.name = self.offerName
-                        if !self.offerDescription.isEmpty{
-                            entityItem.desc = self.offerDescription
-                        }
-                        entityItem.price = self.offerPrice
-                        entityItem.weight = self.offerWeight
-                        entityItem.url = self.offerPictureURL
-                        
-                        do {
-                            try self.managedObjectContext.save()
-                        }catch{
-                            print("Couldnt save data \(error.localizedDescription)")
-                        }
+//                        
+//                        self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+//                        
+//                        let entityItem = Offer(context: self.managedObjectContext)
+//                        entityItem.id = self.offerID
+//                        entityItem.name = self.offerName
+//                        if !self.offerDescription.isEmpty{
+//                            entityItem.desc = self.offerDescription
+//                        }
+//                        entityItem.price = self.offerPrice
+//                        entityItem.weight = self.offerWeight
+//                        entityItem.url = self.offerPictureURL
+//                        
+//                        do {
+//                            try self.managedObjectContext.save()
+//                        }catch{
+//                            print("Couldnt save data \(error.localizedDescription)")
+//                        }
                         
                         //-----------------------------------------------------------
                         
