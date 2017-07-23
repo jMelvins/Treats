@@ -8,12 +8,20 @@
 
 import UIKit
 
-class CatalogTableViewController: UITableViewController {
+class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate {
     
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
+    
+    var parsedOfferStruct = [ParsedOffer]()
+    var parsedCategoryStruct = [ParsedCategory]()
+    var xmlGetter: XMLGetter!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        xmlGetter = XMLGetter(delegate: self)
+        xmlGetter.performParseFromLink()
 
         if self.revealViewController() != nil {
             menuBarButton.target = self.revealViewController()
@@ -27,6 +35,23 @@ class CatalogTableViewController: UITableViewController {
         
         print("catalog did disappear")
     }
+    
+    // MARK: - XMLGetter
+    func didGetOffer(_ offers: [ParsedOffer]) {
+        parsedOfferStruct = offers
+    }
+    
+    func didGetCategory(_ categories: [ParsedCategory]) {
+        DispatchQueue.main.async {
+            self.parsedCategoryStruct = categories
+            self.tableView.reloadData()
+        }
+    }
+    
+    func didNotGet(_ error: NSError) {
+        print("Error \(error)")
+    }
+
 
     // MARK: - Table view data source
     
@@ -39,7 +64,7 @@ class CatalogTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return parsedCategoryStruct.count
     }
 
     
@@ -47,7 +72,7 @@ class CatalogTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CatalogTableViewCell
         
         cell?.iconImage.image = UIImage(named: "Test")
-        cell?.categoryNameLabel.text = "Category \(indexPath.row + 1)"
+        cell?.categoryNameLabel.text = parsedCategoryStruct[indexPath.row].categoryName
 
         return cell!
     }
@@ -56,8 +81,8 @@ class CatalogTableViewController: UITableViewController {
         if segue.identifier == "FoodList" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let controller = segue.destination as! FoodListTableViewController
-                var passedData = indexPath.row * 50
-                controller.someNumber = "\(passedData) RUB"
+                controller.offersArray = parsedOfferStruct
+                controller.categoryID = parsedCategoryStruct[indexPath.row].categoryID
             }
         }
     }

@@ -77,6 +77,7 @@ class XMLGetter{
                 
                 do {
                     let xmlDoc = try? AEXMLDocument(xml: data!, options: options)
+                    print("Parsing started")
                     
                     for categories in (xmlDoc?.root["shop"]["categories"]["category"].all!)! {
                         
@@ -99,7 +100,14 @@ class XMLGetter{
                         }
                         self.offerPictureURL = categories.children[4].value!
                         self.offerID = categories.children[5].value!
-                        self.offerWeight = categories.children[6].value!
+                        //self.offerWeight = categories.children[6].value!
+                        
+                        //Ищем параметр с весом
+                        for index in 6...categories.children.count-1{
+                            if categories.children[index].value!.hasSuffix("гр"){
+                                self.offerWeight = categories.children[index].value!
+                            }
+                        }
                         
                         //Добавление в структуру
                         let newOffer = ParsedOffer(name: self.offerName, price: self.offerPrice, description: self.offerDescription, pictureURL: self.offerPictureURL, id: self.offerID, weight: self.offerWeight)

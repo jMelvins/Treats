@@ -11,17 +11,16 @@ import UIKit
 class FoodListTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    var someNumber = String()
+    
+    var offersArray = [ParsedOffer]()
+    var importantOffers = [ParsedOffer]()
+    var categoryID = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        print(categoryID)
+        prepareForDisplay(the: offersArray)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -30,10 +29,15 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
         print("food did disappear")
     }
     
-    @IBAction func backButton(_ sender: UIBarButtonItem) {
-        self.dismiss(animated: true, completion: nil)
-    }
+    // MARK: -
     
+    func prepareForDisplay(the data: [ParsedOffer]){
+        for object in data{
+            if object.id == categoryID{
+                importantOffers.append(object)
+            }
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -43,21 +47,17 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return importantOffers.count
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodList", for: indexPath) as! FoodListTableViewCell
 
-        if indexPath.row == 0{
-            cell.foodNameLabel.text = "1231231"
-        }
-        
         cell.iconImage.image = UIImage(named: "Test")
-        cell.foodNameLabel.text = "Говядина чили 30см"
-        cell.weightLabel.text = "Weight: 610.00 гр"
-        cell.costLabel.text = "Cost: \(someNumber)."
+        cell.foodNameLabel.text = importantOffers[indexPath.row].name
+        cell.weightLabel.text = importantOffers[indexPath.row].weight
+        cell.costLabel.text = importantOffers[indexPath.row].price + " RUB"
 
         return cell
     }
@@ -70,7 +70,7 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
         if segue.identifier == "FoodDescription" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let controller = segue.destination as! FoodDiscriptionViewController
-                controller.indexPath = "\(indexPath.row)"
+                controller.indexPath = importantOffers[indexPath.row].id
             }
         }
     }
