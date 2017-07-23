@@ -8,6 +8,7 @@
 
 import Foundation
 import AEXML
+import CoreData
 
 protocol CustomXMLGetterDelegate {
     func didGetCategory(_ categories: [ParsedCategory])
@@ -34,12 +35,16 @@ struct ParsedOffer {
 class XMLGetter{
     
     fileprivate let littleLink = "http://ufa.farfor.ru/getyml/?key=ukAXxeJYZN"
-    fileprivate var delegate: CustomXMLGetterDelegate
+    fileprivate let delegate: CustomXMLGetterDelegate
     
     //To parse the category
     var parsedCategoryArray = [ParsedCategory]()
     var categoryID = ""
     var categoryName = ""
+    
+    var entity = [Entity]()
+    var managedObjectContext : NSManagedObjectContext!
+    
     
     //To parse the offer
     var parsedOffersArray = [ParsedOffer]()
@@ -84,8 +89,25 @@ class XMLGetter{
                         self.categoryID = categories.attributes["id"]!
                         self.categoryName = categories.value!
                         
+                        //Добавление в КорДату--------------------------------------
+                        
+                        self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+
+                        let entityItem = Entity(context: self.managedObjectContext)
+                        entityItem.id = self.categoryID
+                        entityItem.name = self.categoryName
+                        
+                        do {
+                            try self.managedObjectContext.save()
+                        }catch{
+                            print("Couldnt save data \(error.localizedDescription)")
+                        }
+                        
+                        //-----------------------------------------------------------
+                        
                         //Добавление в структуру
                         let newCategory = ParsedCategory(categoryID: self.categoryID, categoryName: self.categoryName)
+                        //let newCategory = ParsedCategory(category: categories)
                         
                         self.parsedCategoryArray.append(newCategory)
                     }

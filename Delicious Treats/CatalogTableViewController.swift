@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate {
     
@@ -16,12 +17,35 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
     var parsedCategoryStruct = [ParsedCategory]()
     var xmlGetter: XMLGetter!
 
+    var managedObjectContext : NSManagedObjectContext!
+    var entity = [Entity]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        xmlGetter = XMLGetter(delegate: self)
-        xmlGetter.performParseFromLink()
+        
+        managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+        let presentRequest:NSFetchRequest<Entity> = Entity.fetchRequest()
+        do{
+            self.entity = try self.managedObjectContext.fetch(presentRequest)
+        }catch{
+            print("Couldnt load data from database \(error.localizedDescription)")
+        }
+        
+        if !entity.isEmpty{
+            for index in 0...entity.count-1{
+                print(entity[index].id!)
+                let tempCat = ParsedCategory(categoryID: entity[index].id!, categoryName: entity[index].name!)
+                parsedCategoryStruct.append(tempCat)
+            }
+        }else {
+            xmlGetter = XMLGetter(delegate: self)
+            xmlGetter.performParseFromLink()
+        }
+        
+
+        
+        
 
         if self.revealViewController() != nil {
             menuBarButton.target = self.revealViewController()
