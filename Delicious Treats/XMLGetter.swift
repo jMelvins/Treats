@@ -10,8 +10,9 @@ import Foundation
 import AEXML
 
 protocol CustomXMLGetterDelegate {
-    func didGetCategory(_ category: ParsedCategory)
-    func didGetOffer(_ offer: ParsedOffer)
+    func didGetCategory(_ categories: [ParsedCategory])
+    func didGetOffer(_ offers: [ParsedOffer])
+    func didNotGet(_ error: NSError)
 }
 
 struct ParsedCategory {
@@ -65,9 +66,10 @@ class XMLGetter{
         let dataTask = session.dataTask(with: requestURL as URL) {
             (data: Data?, response: URLResponse?, error: Error?) in
 
-            if error != nil {
-                print("Error:\n\(error)")
+            if let networkError = error {
+                self.delegate.didNotGet(networkError as NSError)
             }else {
+                
                 var options = AEXMLOptions()
                 options.parserSettings.shouldProcessNamespaces = false
                 options.parserSettings.shouldReportNamespacePrefixes = false
@@ -83,10 +85,11 @@ class XMLGetter{
                         
                         //Добавление в структуру
                         let newCategory = ParsedCategory(categoryID: self.categoryID, categoryName: self.categoryName)
-                        self.delegate.didGetCategory(newCategory)
                         
-                        //self.parsedCategoryArray.append(newCategory)
+                        self.parsedCategoryArray.append(newCategory)
                     }
+                    
+                    self.delegate.didGetCategory(self.parsedCategoryArray)
                     
                     for categories in (xmlDoc?.root["shop"]["offers"]["offer"].all!)! {
                         self.offerName = categories.children[1].value!
@@ -101,9 +104,10 @@ class XMLGetter{
                         //Добавление в структуру
                         let newOffer = ParsedOffer(name: self.offerName, price: self.offerPrice, description: self.offerDescription, pictureURL: self.offerPictureURL, id: self.offerID, weight: self.offerWeight)
                         
-                        self.delegate.didGetOffer(newOffer)
-                        //self.parsedOffersArray.append(newOffer)
+                        self.parsedOffersArray.append(newOffer)
                     }
+                    
+                    self.delegate.didGetOffer(self.parsedOffersArray)
                 }
             }
         }
