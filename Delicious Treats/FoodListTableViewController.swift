@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import moa
 
 class FoodListTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -26,7 +27,7 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
             fetchRequest.entity = entity
             let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
             fetchRequest.sortDescriptors = [sortDescriptor]
-            fetchRequest.fetchBatchSize = 40
+            fetchRequest.fetchBatchSize = 20
             let fetchedResultsController = NSFetchedResultsController(
                 fetchRequest: fetchRequest,
                 managedObjectContext: self.managedObjectContext,
@@ -74,16 +75,7 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         
     }
-    
 
-    
-//    func prepareForDisplay(the data: [ParsedOffer]){
-//        for object in data{
-//            if object.id == categoryID{
-//                importantOffers.append(object)
-//            }
-//        }
-//    }
 
     // MARK: - Table view data source
 
@@ -100,7 +92,9 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodList", for: indexPath) as! FoodListTableViewCell
 
-        cell.iconImage.image = UIImage(named: "Test")
+        //cell.iconImage.image = UIImage(named: "Test")
+        cell.iconImage.moa.errorImage  = UIImage(named: "Test")
+        cell.iconImage.moa.url = importantOffers[indexPath.row].url
         cell.foodNameLabel.text = importantOffers[indexPath.row].name
         cell.weightLabel.text = importantOffers[indexPath.row].weight
         cell.costLabel.text = importantOffers[indexPath.row].price! + " RUB"
@@ -116,7 +110,12 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
         if segue.identifier == "FoodDescription" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let controller = segue.destination as! FoodDiscriptionViewController
-                controller.indexPath = importantOffers[indexPath.row].id!
+                controller.name = importantOffers[indexPath.row].name!
+                controller.id = importantOffers[indexPath.row].id!
+                controller.desc = importantOffers[indexPath.row].desc!
+                controller.price = importantOffers[indexPath.row].price!
+                controller.weight = importantOffers[indexPath.row].weight!
+                controller.url = importantOffers[indexPath.row].url!
             }
         }
     }

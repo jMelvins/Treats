@@ -13,12 +13,17 @@ class FoodDiscriptionViewController: UIViewController {
     @IBOutlet weak var indexPathLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     
-    var indexPath = String()
+    var name = ""
+    var id = ""
+    var desc = ""
+    var price = ""
+    var weight = ""
+    var url = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        indexPathLabel.text = indexPath
+        indexPathLabel.text = name + "  " + id + "  " + desc + "  " + price + "  " + weight + "  " + url
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(sender:)))
         self.view.addGestureRecognizer(tap)

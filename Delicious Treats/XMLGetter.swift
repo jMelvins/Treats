@@ -65,6 +65,7 @@ class XMLGetter{
 //            let data = try? Data(contentsOf: URL(string: littleLink)!)
 //            else { return }
         
+        print("Try to perform parse.")
         let session = URLSession.shared
         let requestURL = URL(string: littleLink)!
         
@@ -88,21 +89,7 @@ class XMLGetter{
                         
                         self.categoryID = categories.attributes["id"]!
                         self.categoryName = categories.value!
-                        
-                        //Добавление в КорДату--------------------------------------
-                        
-//                        self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-//
-//                        let entityItem = Category(context: self.managedObjectContext)
-//                        entityItem.id = self.categoryID
-//                        entityItem.name = self.categoryName
-//                        
-//                        do {
-//                            try self.managedObjectContext.save()
-//                        }catch{
-//                            print("Couldnt save data \(error.localizedDescription)")
-//                        }
-                        
+            
                         //-----------------------------------------------------------
                         
                         //Добавление в структуру
@@ -113,10 +100,6 @@ class XMLGetter{
                     }
                     
                     self.delegate.didGetCategory(self.parsedCategoryArray)
-                    
-                    print("\nITIS")
-                    print((xmlDoc?.root["shop"]["offers"]["offer"].all!.count)!)
-                    print("")
                     
                     for categories in (xmlDoc?.root["shop"]["offers"]["offer"].all!)! {
                         self.offerName = categories.children[1].value!
@@ -134,28 +117,6 @@ class XMLGetter{
                                 self.offerWeight = categories.children[index].value!
                             }
                         }
-                        
-                        //Добавление в КорДату--------------------------------------
-//                        
-//                        self.managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-//                        
-//                        let entityItem = Offer(context: self.managedObjectContext)
-//                        entityItem.id = self.offerID
-//                        entityItem.name = self.offerName
-//                        if !self.offerDescription.isEmpty{
-//                            entityItem.desc = self.offerDescription
-//                        }
-//                        entityItem.price = self.offerPrice
-//                        entityItem.weight = self.offerWeight
-//                        entityItem.url = self.offerPictureURL
-//                        
-//                        do {
-//                            try self.managedObjectContext.save()
-//                        }catch{
-//                            print("Couldnt save data \(error.localizedDescription)")
-//                        }
-                        
-                        //-----------------------------------------------------------
                         
                         //Добавление в структуру
                         let newOffer = ParsedOffer(name: self.offerName, price: self.offerPrice, description: self.offerDescription, pictureURL: self.offerPictureURL, id: self.offerID, weight: self.offerWeight)

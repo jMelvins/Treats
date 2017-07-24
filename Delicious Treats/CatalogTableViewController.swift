@@ -63,26 +63,56 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
         }
     }
     
+    // MARK: - Image
+    // TODO: - Сделать сохранине картинок в CoreData
+    
+    var imageData = NSData()
+    func loadImage(_ urlString: String){
+        
+        let url:URL = URL(string: urlString)!
+        let session = URLSession.shared
+        
+        let task = session.downloadTask(with: url) {
+            (Url: URL?, respone: URLResponse?, error: Error?) in
+            guard let _:URL = Url, let _:URLResponse = respone, error == nil else {
+                print("error")
+                return
+            }
+            
+            let imageData = try? Data(contentsOf: Url!)
+            self.imageData = imageData! as NSData
+
+        }
+        task.resume()
+    }
+
+    
+    
     // MARK: - XMLGetter
     func didGetOffer(_ offers: [ParsedOffer]) {
         parsedOfferStruct = offers
         
-        for object in parsedOfferStruct{
-            let entityItem = Offer(context: managedObjectContext)
-            entityItem.id = object.id
-            entityItem.name = object.name
-            if !object.description.isEmpty{
-                entityItem.desc = object.description
+        DispatchQueue.global(qos: .default).async {
+            for object in self.parsedOfferStruct{
+                let entityItem = Offer(context: self.managedObjectContext)
+                entityItem.id = object.id
+                entityItem.name = object.name
+                if !object.description.isEmpty{
+                    entityItem.desc = object.description
+                }
+                entityItem.price = object.price
+                entityItem.weight = object.weight
+                entityItem.url = object.pictureURL
+                self.loadImage(entityItem.url!)
+                entityItem.imageID = self.imageData
             }
-            entityItem.price = object.price
-            entityItem.weight = object.weight
-            entityItem.url = object.pictureURL
+            do {
+                try self.managedObjectContext.save()
+            }catch{
+                print("Couldnt save data \(error.localizedDescription)")
+            }
         }
-        do {
-            try managedObjectContext.save()
-        }catch{
-            print("Couldnt save data \(error.localizedDescription)")
-        }
+        
     }
     
     func didGetCategory(_ categories: [ParsedCategory]) {

@@ -7,6 +7,7 @@
     <entity name="Offer" representedClassName="Offer" syncable="YES" codeGenerationType="class">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageID" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
@@ -14,6 +15,6 @@
     </entity>
     <elements>
         <element name="Category" positionX="-63" positionY="-18" width="128" height="75"/>
-        <element name="Offer" positionX="-63" positionY="0" width="128" height="135"/>
+        <element name="Offer" positionX="-63" positionY="0" width="128" height="150"/>
     </elements>
 </model>
