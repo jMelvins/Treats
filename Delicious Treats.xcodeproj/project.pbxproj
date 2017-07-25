@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		01052D2DCD600C08B141ED92 /* Pods_Delicious_TreatsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F746360CA819AC29174C08DB /* Pods_Delicious_TreatsUITests.framework */; };
 		50A830D8BB597CA320D7A57C /* Pods_Delicious_Treats.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E1E426482FEFFCF4928EB1B /* Pods_Delicious_Treats.framework */; };
+		A04ABBAF1F26708D00BD7A01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A04ABBAE1F26708D00BD7A01 /* Assets.xcassets */; };
+		A04ABC061F26DAE000BD7A01 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04ABC051F26DAE000BD7A01 /* MapViewController.swift */; };
 		A07B26AB1F22827D00B18106 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A07B26AA1F22827D00B18106 /* SWRevealViewController.m */; };
 		A07B26AE1F22928F00B18106 /* CatalogTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26AD1F22928F00B18106 /* CatalogTableViewController.swift */; };
 		A07B26B01F2294F600B18106 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26AF1F2294F600B18106 /* MenuViewController.swift */; };
-		A07B26B41F22966200B18106 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26B31F22966200B18106 /* ContactsTableViewCell.swift */; };
-		A07B26B61F22966E00B18106 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26B51F22966E00B18106 /* ContactsTableViewController.swift */; };
 		A07B26BB1F229D3900B18106 /* CatalogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26BA1F229D3900B18106 /* CatalogTableViewCell.swift */; };
 		A07B26BD1F229FC200B18106 /* FoodListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26BC1F229FC200B18106 /* FoodListTableViewCell.swift */; };
 		A07B26BF1F229FCE00B18106 /* FoodListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B26BE1F229FCE00B18106 /* FoodListTableViewController.swift */; };
@@ -24,7 +24,6 @@
 		A0F643F01F224E430023A9B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F643EF1F224E430023A9B0 /* AppDelegate.swift */; };
 		A0F643F51F224E430023A9B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F643F31F224E430023A9B0 /* Main.storyboard */; };
 		A0F643F81F224E430023A9B0 /* Delicious_Treats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0F643F61F224E430023A9B0 /* Delicious_Treats.xcdatamodeld */; };
-		A0F643FA1F224E430023A9B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0F643F91F224E430023A9B0 /* Assets.xcassets */; };
 		A0F643FD1F224E430023A9B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F643FB1F224E430023A9B0 /* LaunchScreen.storyboard */; };
 		A0F644081F224E430023A9B0 /* Delicious_TreatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F644071F224E430023A9B0 /* Delicious_TreatsTests.swift */; };
 		A0F644131F224E430023A9B0 /* Delicious_TreatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F644121F224E430023A9B0 /* Delicious_TreatsUITests.swift */; };
@@ -55,13 +54,13 @@
 		562F0A484EFD966F3CAF125D /* Pods_Delicious_TreatsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Delicious_TreatsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E1E426482FEFFCF4928EB1B /* Pods_Delicious_Treats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Delicious_Treats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9791C9D405CC414159E9EBC4 /* Pods-Delicious TreatsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Delicious TreatsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Delicious TreatsTests/Pods-Delicious TreatsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A04ABBAE1F26708D00BD7A01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A04ABC051F26DAE000BD7A01 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A07B26A81F22827C00B18106 /* Delicious Treats-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Delicious Treats-Bridging-Header.h"; sourceTree = "<group>"; };
 		A07B26A91F22827D00B18106 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		A07B26AA1F22827D00B18106 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		A07B26AD1F22928F00B18106 /* CatalogTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogTableViewController.swift; sourceTree = "<group>"; };
 		A07B26AF1F2294F600B18106 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		A07B26B31F22966200B18106 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
-		A07B26B51F22966E00B18106 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		A07B26BA1F229D3900B18106 /* CatalogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogTableViewCell.swift; sourceTree = "<group>"; };
 		A07B26BC1F229FC200B18106 /* FoodListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewCell.swift; sourceTree = "<group>"; };
 		A07B26BE1F229FCE00B18106 /* FoodListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodListTableViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +72,6 @@
 		A0F643EF1F224E430023A9B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0F643F41F224E430023A9B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A0F643F71F224E430023A9B0 /* Delicious_Treats.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Delicious_Treats.xcdatamodel; sourceTree = "<group>"; };
-		A0F643F91F224E430023A9B0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0F643FC1F224E430023A9B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0F643FE1F224E430023A9B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0F644031F224E430023A9B0 /* Delicious TreatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Delicious TreatsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,8 +150,8 @@
 		A07B26B71F22968B00B18106 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				A04ABBAE1F26708D00BD7A01 /* Assets.xcassets */,
 				A07B26AF1F2294F600B18106 /* MenuViewController.swift */,
-				A0F643F91F224E430023A9B0 /* Assets.xcassets */,
 				A0F643FB1F224E430023A9B0 /* LaunchScreen.storyboard */,
 				A0F643FE1F224E430023A9B0 /* Info.plist */,
 				A0F643F61F224E430023A9B0 /* Delicious_Treats.xcdatamodeld */,
@@ -176,8 +174,7 @@
 		A07B26B91F2296A700B18106 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				A07B26B51F22966E00B18106 /* ContactsTableViewController.swift */,
-				A07B26B31F22966200B18106 /* ContactsTableViewCell.swift */,
+				A04ABC051F26DAE000BD7A01 /* MapViewController.swift */,
 			);
 			name = Contacts;
 			sourceTree = "<group>";
@@ -357,8 +354,8 @@
 			files = (
 				A0F643FD1F224E430023A9B0 /* LaunchScreen.storyboard in Resources */,
 				A07B270D1F240E6700B18106 /* Shop.xml in Resources */,
-				A0F643FA1F224E430023A9B0 /* Assets.xcassets in Resources */,
 				A0F643F51F224E430023A9B0 /* Main.storyboard in Resources */,
+				A04ABBAF1F26708D00BD7A01 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,17 +519,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A07B27151F24EFC000B18106 /* ParsedCategory.swift in Sources */,
-				A07B26B41F22966200B18106 /* ContactsTableViewCell.swift in Sources */,
 				A07B26BF1F229FCE00B18106 /* FoodListTableViewController.swift in Sources */,
 				A07B270B1F240D6F00B18106 /* XMLGetter.swift in Sources */,
 				A0F643F81F224E430023A9B0 /* Delicious_Treats.xcdatamodeld in Sources */,
 				A07B26B01F2294F600B18106 /* MenuViewController.swift in Sources */,
 				A07B26C11F22A15700B18106 /* FoodDiscriptionViewController.swift in Sources */,
 				A07B26BB1F229D3900B18106 /* CatalogTableViewCell.swift in Sources */,
+				A04ABC061F26DAE000BD7A01 /* MapViewController.swift in Sources */,
 				A0F643F01F224E430023A9B0 /* AppDelegate.swift in Sources */,
 				A07B26AE1F22928F00B18106 /* CatalogTableViewController.swift in Sources */,
 				A07B26BD1F229FC200B18106 /* FoodListTableViewCell.swift in Sources */,
-				A07B26B61F22966E00B18106 /* ContactsTableViewController.swift in Sources */,
 				A07B26AB1F22827D00B18106 /* SWRevealViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

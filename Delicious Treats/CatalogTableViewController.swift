@@ -1,4 +1,4 @@
-//
+ //
 //  CatalogTableViewController.swift
 //  Delicious Treats
 //
@@ -27,6 +27,8 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
         managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
         let presentRequest:NSFetchRequest<Category> = Category.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        presentRequest.sortDescriptors = [sortDescriptor]
         do{
             self.categoryEntity = try self.managedObjectContext.fetch(presentRequest)
         }catch{
@@ -58,7 +60,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
     
     func writeInCategoryStruct(){
         for index in 0...categoryEntity.count-1{
-            let tempCat = ParsedCategory(categoryID: categoryEntity[index].id!, categoryName: categoryEntity[index].name!)
+            let tempCat = ParsedCategory(categoryID: categoryEntity[index].id!, categoryName: categoryEntity[index].name!, categoryDate: categoryEntity[index].date! as Date)
             parsedCategoryStruct.append(tempCat)
         }
     }
@@ -125,6 +127,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
             let entityItem = Category(context: managedObjectContext)
             entityItem.id = object.categoryID
             entityItem.name = object.categoryName
+            entityItem.date = object.categoryDate as NSDate
         }
         do {
             try managedObjectContext.save()
@@ -142,7 +145,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 77
+        return 44
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -157,7 +160,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CatalogTableViewCell
         
-        cell?.iconImage.image = UIImage(named: "Test")
+        cell?.iconImage.image = UIImage(named: "\(indexPath.row+1)")
         cell?.categoryNameLabel.text = parsedCategoryStruct[indexPath.row].categoryName
 
         return cell!
@@ -168,6 +171,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let controller = segue.destination as! FoodListTableViewController
                 //controller.offersArray = parsedOfferStruct
+                controller.categoryName = parsedCategoryStruct[indexPath.row].categoryName
                 controller.categoryID = parsedCategoryStruct[indexPath.row].categoryID
             }
         }

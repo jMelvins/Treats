@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        GMSServices.provideAPIKey("AIzaSyBcn9fVPb8QCZ3s9TNNvnoaAx0XGV1DwZc")
         
         let applicationDocumentsDirectory: URL = {
             let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

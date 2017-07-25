@@ -48,7 +48,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qz0-bM-rEa" id="otR-gE-tU8">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Каталог" translatesAutoresizingMaskIntoConstraints="NO" id="pv9-Ab-7sJ">
@@ -73,7 +73,7 @@
                                         <rect key="frame" x="0.0" y="44" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ppi-oo-vWH" id="oZi-iI-NrR">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Контакты" translatesAutoresizingMaskIntoConstraints="NO" id="Fom-2V-Hbv">
@@ -90,6 +90,9 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <segue destination="DSK-iR-Q7D" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="U7X-Xw-ci1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -104,6 +107,38 @@
             </objects>
             <point key="canvasLocation" x="1097" y="35"/>
         </scene>
+        <!--Contacs-->
+        <scene sceneID="xtH-Kb-1Mb">
+            <objects>
+                <viewController id="abh-6i-Sga" customClass="MapViewController" customModule="Delicious_Treats" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nVh-09-Ngt"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Oa-Ab-mHa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3qS-jH-vdP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vrf-Nt-fLG" customClass="GMSMapView">
+                                <rect key="frame" x="40" y="111" width="240" height="271"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Contacs" id="NQj-sR-INT">
+                        <barButtonItem key="leftBarButtonItem" image="menu" id="U2M-6K-o29"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="vrf-Nt-fLG" id="YTu-BV-SG9"/>
+                        <outlet property="menuButton" destination="U2M-6K-o29" id="3YR-A0-0R3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a48-wx-bfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2853.75" y="391.90140845070425"/>
+        </scene>
         <!--Catalog-->
         <scene sceneID="ink-AG-9oh">
             <objects>
@@ -113,19 +148,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="77" id="1l5-OG-H1m" customClass="CatalogTableViewCell" customModule="Delicious_Treats" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="77"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="44" id="1l5-OG-H1m" customClass="CatalogTableViewCell" customModule="Delicious_Treats" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1l5-OG-H1m" id="Kq6-wv-nBE">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CzQ-FI-Ah6">
-                                            <rect key="frame" x="8" y="11" width="55" height="55"/>
+                                            <rect key="frame" x="8" y="4" width="35" height="35"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(categoryName)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1e-Li-wbq">
-                                            <rect key="frame" x="75" y="11" width="237" height="21"/>
+                                            <rect key="frame" x="51" y="11" width="261" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -157,7 +192,7 @@
             </objects>
             <point key="canvasLocation" x="2853.75" y="-351.76056338028167"/>
         </scene>
-        <!--Title-->
+        <!--Food List Table View Controller-->
         <scene sceneID="aW2-T1-fG6">
             <objects>
                 <viewController id="NbO-Ha-xWG" customClass="FoodListTableViewController" customModule="Delicious_Treats" customModuleProvider="target" sceneMemberID="viewController">
@@ -177,7 +212,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gI6-DO-kfL" id="xOf-f7-dgs">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="75.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FOQ-Cg-xz7">
@@ -230,7 +265,7 @@
                             <constraint firstItem="tEv-Li-eYg" firstAttribute="top" secondItem="4T3-A9-Egh" secondAttribute="bottom" id="dMf-2n-SZa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="JeA-BO-Ax3"/>
+                    <navigationItem key="navigationItem" id="JeA-BO-Ax3"/>
                     <connections>
                         <outlet property="tableView" destination="4T3-A9-Egh" id="cUu-c4-yWc"/>
                     </connections>
@@ -284,6 +319,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CLs-j3-69L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1920" y="-351"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Uq6-AL-KDg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DSK-iR-Q7D" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S6R-6C-J6c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="abh-6i-Sga" kind="relationship" relationship="rootViewController" id="DTF-Vy-bgS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vy3-eg-14M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1920" y="392"/>
         </scene>
     </scenes>
     <resources>

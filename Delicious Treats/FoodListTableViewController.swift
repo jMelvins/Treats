@@ -15,6 +15,7 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
     
     var categoryID = ""
+    var categoryName = ""
 
     var offers = [Offer]()
     var importantOffers = [Offer]()
@@ -46,6 +47,8 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
         performFetch()
+        
+        navigationItem.title = categoryName
         
         print(categoryID)
 
@@ -93,6 +96,8 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodList", for: indexPath) as! FoodListTableViewCell
 
         //cell.iconImage.image = UIImage(named: "Test")
+        
+        cell.iconImage.image = nil
         cell.iconImage.moa.errorImage  = UIImage(named: "Test")
         cell.iconImage.moa.url = importantOffers[indexPath.row].url
         cell.foodNameLabel.text = importantOffers[indexPath.row].name
