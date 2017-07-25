@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -247,7 +248,7 @@
                                             <outlet property="foodNameLabel" destination="852-6m-y0g" id="O8F-OL-PSj"/>
                                             <outlet property="iconImage" destination="FOQ-Cg-xz7" id="mfR-sM-fKq"/>
                                             <outlet property="weightLabel" destination="f7M-s5-Wqc" id="vPG-Eg-hGc"/>
-                                            <segue destination="xI6-MO-ftl" kind="presentation" identifier="FoodDescription" id="dmT-gT-MPm"/>
+                                            <segue destination="xI6-MO-ftl" kind="presentation" identifier="FoodDescription" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="dmT-gT-MPm"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -277,7 +278,7 @@
         <!--Food Discription View Controller-->
         <scene sceneID="qLJ-Iu-w9R">
             <objects>
-                <viewController id="xI6-MO-ftl" customClass="FoodDiscriptionViewController" customModule="Delicious_Treats" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="xI6-MO-ftl" customClass="FoodDiscriptionViewController" customModule="Delicious_Treats" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="c1k-AF-jTi"/>
                         <viewControllerLayoutGuide type="bottom" id="P1J-83-Zdq"/>
@@ -286,18 +287,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jR-du-7eK">
-                                <rect key="frame" x="16" y="20" width="288" height="283"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LxK-4H-9L8">
+                                <rect key="frame" x="40" y="102" width="240" height="365"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jR-du-7eK">
+                                        <rect key="frame" x="0.0" y="144" width="240" height="221"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eRG-cZ-FJL">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="145"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LxK-4H-9L8" firstAttribute="leading" secondItem="g6a-4i-GTM" secondAttribute="leadingMargin" constant="24" id="LRe-8v-e8o"/>
+                            <constraint firstItem="P1J-83-Zdq" firstAttribute="top" secondItem="LxK-4H-9L8" secondAttribute="bottom" constant="101" id="jZI-5w-Fj1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LxK-4H-9L8" secondAttribute="trailing" constant="24" id="tth-tU-Ed4"/>
+                            <constraint firstItem="LxK-4H-9L8" firstAttribute="top" secondItem="c1k-AF-jTi" secondAttribute="bottom" constant="82" id="y3p-nW-Y6s"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="iconImage" destination="eRG-cZ-FJL" id="ASr-w8-mnG"/>
                         <outlet property="indexPathLabel" destination="5jR-du-7eK" id="rhL-vu-GNu"/>
+                        <outlet property="popUpView" destination="LxK-4H-9L8" id="ail-8b-Tiz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="er4-6X-Dl4" userLabel="First Responder" sceneMemberID="firstResponder"/>

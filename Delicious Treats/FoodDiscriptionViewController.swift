@@ -10,6 +10,7 @@ import UIKit
 
 class FoodDiscriptionViewController: UIViewController {
 
+    @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var indexPathLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     
@@ -19,10 +20,16 @@ class FoodDiscriptionViewController: UIViewController {
     var price = ""
     var weight = ""
     var url = ""
+    var imageData = NSData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        popUpView.layer.cornerRadius = 10
+        popUpView.layer.masksToBounds = true
+        
+        let image = UIImage(data: imageData as Data)
+        iconImage.image = image
         indexPathLabel.text = name + "  " + id + "  " + desc + "  " + price + "  " + weight + "  " + url
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(sender:)))

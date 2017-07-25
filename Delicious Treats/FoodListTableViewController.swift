@@ -14,6 +14,8 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     
+    var image = UIImage()
+    
     var categoryID = ""
     var categoryName = ""
 
@@ -98,13 +100,68 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
         //cell.iconImage.image = UIImage(named: "Test")
         
         cell.iconImage.image = nil
-        cell.iconImage.moa.errorImage  = UIImage(named: "Test")
-        cell.iconImage.moa.url = importantOffers[indexPath.row].url
+//        
+//        if let imageFromDataBase = fetchedOfferResultsController.object(at: indexPath).imageID{
+//            cell.iconImage.image = UIImage(data: imageFromDataBase as Data)
+//            print("Image loaded from database.")
+//        }else{
+//            //cell.iconImage.moa.errorImage  = UIImage(named: "Test")
+//            //cell.iconImage.moa.url = importantOffers[indexPath.row].url
+//            getImage(indexPath: indexPath, cell: cell)
+//            print("Start download image.")
+//        }
+        
+        //cell.iconImage.moa.errorImage  = UIImage(named: "Test")
+        //cell.iconImage.moa.url = importantOffers[indexPath.row].url
+        let image = UIImage(data: importantOffers[indexPath.row].imageID! as Data)
+        cell.iconImage.image = image
         cell.foodNameLabel.text = importantOffers[indexPath.row].name
         cell.weightLabel.text = importantOffers[indexPath.row].weight
         cell.costLabel.text = importantOffers[indexPath.row].price! + " RUB"
 
         return cell
+    }
+    
+    func saveImageInCoreData(from data: Data) {
+        let entityItem = Offer(context: managedObjectContext)
+        entityItem.imageID = data as NSData?
+        
+        do {
+            try self.managedObjectContext.save()
+            print("image save")
+        }catch{
+            print("Couldnt save data \(error.localizedDescription)")
+        }
+
+    }
+    
+    func getImage(indexPath: IndexPath, cell: FoodListTableViewCell){
+        let session = URLSession.shared
+        
+        let weatherRequestURL = URL(string: importantOffers[indexPath.row].url!)
+        
+        let dataTask = session.dataTask(with: weatherRequestURL!) {
+            (data: Data?, response: URLResponse?, error: Error?) in
+            if let error = error {
+                // Case 1: Error
+                // We got some kind of error while trying to get data from the server.
+                print("Error:\n\(error)")
+                //self.delegate.didNotGetWeather(networkError as NSError)
+            }
+            else {
+                // Case 2: Success
+                // We got a response from the server!
+                do {
+                    self.saveImageInCoreData(from: data!)
+                    DispatchQueue.main.async {
+                        self.image = UIImage(data: data!)!
+                        cell.iconImage.image = self.image
+                    }
+                }
+            }
+        }
+        
+        dataTask.resume()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -121,6 +178,7 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
                 controller.price = importantOffers[indexPath.row].price!
                 controller.weight = importantOffers[indexPath.row].weight!
                 controller.url = importantOffers[indexPath.row].url!
+                controller.imageData = importantOffers[indexPath.row].imageID!
             }
         }
     }

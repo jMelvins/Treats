@@ -83,7 +83,6 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
             
             let imageData = try? Data(contentsOf: Url!)
             self.imageData = imageData! as NSData
-
         }
         task.resume()
     }
