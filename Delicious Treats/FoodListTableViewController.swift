@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import moa
 
 class FoodListTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
