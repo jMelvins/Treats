@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import moa
 
 class FoodListTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
@@ -47,16 +46,13 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(FoodListTableViewController.backBtn))
-        //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back", style: .done, target: self, action: #selector(FoodListTableViewController.backBtn))
-
         
         managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
         performFetch()
         
         navigationItem.title = categoryName
         
-        print(categoryID)
+        print("Category: \(categoryID)")
 
     }
     
@@ -104,78 +100,14 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FoodList", for: indexPath) as! FoodListTableViewCell
-
-        //cell.iconImage.image = UIImage(named: "Test")
         
-        cell.iconImage.image = nil
-//        
-//        if let imageFromDataBase = fetchedOfferResultsController.object(at: indexPath).imageID{
-//            cell.iconImage.image = UIImage(data: imageFromDataBase as Data)
-//            print("Image loaded from database.")
-//        }else{
-//            //cell.iconImage.moa.errorImage  = UIImage(named: "Test")
-//            //cell.iconImage.moa.url = importantOffers[indexPath.row].url
-//            getImage(indexPath: indexPath, cell: cell)
-//            print("Start download image.")
-//        }
+        //cell.iconImage.image = nil
         
-        //cell.iconImage.moa.errorImage  = UIImage(named: "Test")
-        //cell.iconImage.moa.url = importantOffers[indexPath.row].url
-        
-        if importantOffers[indexPath.row].imageID != nil{
-            cell.iconImage.image = UIImage(data: importantOffers[indexPath.row].imageID! as Data)
-        }else {
-            cell.iconImage.image = UIImage(named: "question")
-        }
-        cell.foodNameLabel.text = importantOffers[indexPath.row].name
-        cell.weightLabel.text = importantOffers[indexPath.row].weight
-        cell.costLabel.text = importantOffers[indexPath.row].price! + " RUB"
+        cell.offer = importantOffers[indexPath.row]
 
         return cell
     }
-    
-    func saveImageInCoreData(from data: Data) {
-        let entityItem = Offer(context: managedObjectContext)
-        entityItem.imageID = data as NSData?
-        
-        do {
-            try self.managedObjectContext.save()
-            print("image save")
-        }catch{
-            print("Couldnt save data \(error.localizedDescription)")
-        }
 
-    }
-    
-    func getImage(indexPath: IndexPath, cell: FoodListTableViewCell){
-        let session = URLSession.shared
-        
-        let weatherRequestURL = URL(string: importantOffers[indexPath.row].url!)
-        
-        let dataTask = session.dataTask(with: weatherRequestURL!) {
-            (data: Data?, response: URLResponse?, error: Error?) in
-            if let error = error {
-                // Case 1: Error
-                // We got some kind of error while trying to get data from the server.
-                print("Error:\n\(error)")
-                //self.delegate.didNotGetWeather(networkError as NSError)
-            }
-            else {
-                // Case 2: Success
-                // We got a response from the server!
-                do {
-                    self.saveImageInCoreData(from: data!)
-                    DispatchQueue.main.async {
-                        self.image = UIImage(data: data!)!
-                        cell.iconImage.image = self.image
-                    }
-                }
-            }
-        }
-        
-        dataTask.resume()
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -197,7 +129,7 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
                     //Если до сих пор картинка не загружена, передаем вопрос
                     let image = UIImagePNGRepresentation(UIImage(named: "question")!)
                     controller.imageData = image! as NSData
-                    //content mode для вопроса должен быть таким, чтобы его не ратягивало 
+                    //content mode для вопроса должен быть таким, чтобы его не растягивало 
                     controller.contentMode = UIViewContentMode.scaleAspectFill
                     controller.imageIsHiden = false
                 }
@@ -208,7 +140,6 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
 }
 
 
-//Описание слушателя кор даты. Реагирует на любые изменения в ней, следовательно перересовывает tableView
 extension FoodListTableViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller:
         NSFetchedResultsController<NSFetchRequestResult>) {
@@ -228,38 +159,21 @@ extension FoodListTableViewController: NSFetchedResultsControllerDelegate {
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
             print("*** NSFetchedResultsChangeUpdate (object)")
-            if let cell = tableView.cellForRow(at: indexPath!)
-                as? FoodListTableViewCell {
+            if let cell = tableView.cellForRow(at: indexPath!) {
                 importantOffers[(indexPath?.row)!].imageID = fetchedOfferResultsController.object(at: indexPath!).imageID
-                let image = UIImage(data: importantOffers[(indexPath?.row)!].imageID! as Data)
-                cell.iconImage.image = image
-                cell.foodNameLabel.text = importantOffers[(indexPath?.row)!].name
-                cell.weightLabel.text = importantOffers[(indexPath?.row)!].weight
-                cell.costLabel.text = importantOffers[(indexPath?.row)!].price! + " RUB"
+//                let image = UIImage(data: importantOffers[(indexPath?.row)!].imageID! as Data)
+//                cell.iconImage.image = image
+//                cell.foodNameLabel.text = importantOffers[(indexPath?.row)!].name
+//                cell.weightLabel.text = importantOffers[(indexPath?.row)!].weight
+//                cell.costLabel.text = importantOffers[(indexPath?.row)!].price! + " RUB"
+                //cell.offer = importantOffers[(indexPath?.row)!]
+                
             }
         case .move:
             print("*** NSFetchedResultsChangeMove (object)")
             tableView.deleteRows(at: [indexPath!], with: .fade)
             tableView.insertRows(at: [newIndexPath!], with: .fade)
         } }
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChange sectionInfo: NSFetchedResultsSectionInfo,
-                    atSectionIndex sectionIndex: Int,
-                    for type: NSFetchedResultsChangeType) {
-        
-        switch type {
-        case .insert:
-            print("*** NSFetchedResultsChangeInsert (section)")
-            tableView.insertSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .delete:
-            print("*** NSFetchedResultsChangeDelete (section)")
-            tableView.deleteSections(IndexSet(integer: sectionIndex), with: .fade)
-        case .update:
-            print("*** NSFetchedResultsChangeUpdate (section)")
-        case .move:
-            print("*** NSFetchedResultsChangeMove (section)")
-        }
-    }
     func controllerDidChangeContent(
         _ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         print("*** controllerDidChangeContent")

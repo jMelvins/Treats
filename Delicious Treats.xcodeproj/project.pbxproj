@@ -21,6 +21,7 @@
 		A07B270B1F240D6F00B18106 /* XMLGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A07B270A1F240D6F00B18106 /* XMLGetter.swift */; };
 		A07B270D1F240E6700B18106 /* Shop.xml in Resources */ = {isa = PBXBuildFile; fileRef = A07B270C1F240E6700B18106 /* Shop.xml */; };
 		A0A8DDF81F282FEF004D4932 /* MyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A8DDF71F282FEF004D4932 /* MyNavigationController.swift */; };
+		A0A8DDFC1F294C0B004D4932 /* NewtworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A8DDFB1F294C0B004D4932 /* NewtworkingService.swift */; };
 		A0F643F01F224E430023A9B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F643EF1F224E430023A9B0 /* AppDelegate.swift */; };
 		A0F643F51F224E430023A9B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A0F643F31F224E430023A9B0 /* Main.storyboard */; };
 		A0F643F81F224E430023A9B0 /* Delicious_Treats.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A0F643F61F224E430023A9B0 /* Delicious_Treats.xcdatamodeld */; };
@@ -68,6 +69,7 @@
 		A07B270A1F240D6F00B18106 /* XMLGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLGetter.swift; sourceTree = "<group>"; };
 		A07B270C1F240E6700B18106 /* Shop.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Shop.xml; sourceTree = "<group>"; };
 		A0A8DDF71F282FEF004D4932 /* MyNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationController.swift; sourceTree = "<group>"; };
+		A0A8DDFB1F294C0B004D4932 /* NewtworkingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewtworkingService.swift; sourceTree = "<group>"; };
 		A0F643EC1F224E430023A9B0 /* Delicious Treats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Delicious Treats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0F643EF1F224E430023A9B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0F643F41F224E430023A9B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				A07B26B91F2296A700B18106 /* Contacts */,
 				A07B270A1F240D6F00B18106 /* XMLGetter.swift */,
 				A0A8DDF71F282FEF004D4932 /* MyNavigationController.swift */,
+				A0A8DDFB1F294C0B004D4932 /* NewtworkingService.swift */,
 				A07B270C1F240E6700B18106 /* Shop.xml */,
 				A07B26AC1F2283D500B18106 /* Frameworks */,
 				A07B26B71F22968B00B18106 /* Support Files */,
@@ -524,6 +527,7 @@
 				A07B26B01F2294F600B18106 /* MenuViewController.swift in Sources */,
 				A07B26C11F22A15700B18106 /* FoodDiscriptionViewController.swift in Sources */,
 				A07B26BB1F229D3900B18106 /* CatalogTableViewCell.swift in Sources */,
+				A0A8DDFC1F294C0B004D4932 /* NewtworkingService.swift in Sources */,
 				A04ABC061F26DAE000BD7A01 /* MapViewController.swift in Sources */,
 				A0A8DDF81F282FEF004D4932 /* MyNavigationController.swift in Sources */,
 				A0F643F01F224E430023A9B0 /* AppDelegate.swift in Sources */,

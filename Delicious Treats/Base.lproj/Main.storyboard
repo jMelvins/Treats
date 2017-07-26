@@ -172,7 +172,7 @@
                                 <connections>
                                     <outlet property="categoryNameLabel" destination="W1e-Li-wbq" id="x91-VE-NKu"/>
                                     <outlet property="iconImage" destination="CzQ-FI-Ah6" id="ack-ov-z3c"/>
-                                    <segue destination="z2l-FM-rhp" kind="presentation" identifier="FoodList" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="iud-PF-rMI"/>
+                                    <segue destination="NbO-Ha-xWG" kind="show" identifier="FoodList" id="xF2-Ra-ubU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -243,7 +243,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="75.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FOQ-Cg-xz7">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="question" translatesAutoresizingMaskIntoConstraints="NO" id="FOQ-Cg-xz7">
                                                     <rect key="frame" x="8" y="10" width="55" height="55"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -300,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qio-wB-8nr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4650" y="-352.81690140845069"/>
+            <point key="canvasLocation" x="3782" y="-352"/>
         </scene>
         <!--Food Discription View Controller-->
         <scene sceneID="qLJ-Iu-w9R">
@@ -382,7 +382,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="er4-6X-Dl4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5568.115942028986" y="-354.61956521739131"/>
+            <point key="canvasLocation" x="4671" y="-353"/>
         </scene>
         <!--My Navigation Controller-->
         <scene sceneID="Taq-uD-krT">
@@ -427,29 +427,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vy3-eg-14M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1920" y="392"/>
-        </scene>
-        <!--My Navigation Controller-->
-        <scene sceneID="6n2-jI-PKe">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="z2l-FM-rhp" customClass="MyNavigationController" customModule="Delicious_Treats" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Y9c-i5-Exc">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" red="1" green="0.5607843137254902" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="1" green="0.41568627450980389" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="NbO-Ha-xWG" kind="relationship" relationship="rootViewController" id="1m2-hy-7Cz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q8w-yc-ldu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3744" y="-352"/>
         </scene>
     </scenes>
     <resources>

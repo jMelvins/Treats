@@ -9,6 +9,40 @@
 import UIKit
 
 class FoodListTableViewCell: UITableViewCell {
+    
+    var offer: Offer! {
+        didSet{
+            self.updateUI()
+        }
+    }
+    
+    func updateUI() {
+        
+        foodNameLabel.text = offer.name
+        weightLabel.text = offer.weight
+        costLabel.text = offer.price! + " RUB"
+        
+        
+        if offer.imageID == nil{
+            iconImage.image = UIImage(named: "question")
+            if let thumbnailURL = URL(string: offer.url!){
+                let newtworkServise = NetworkService(url: thumbnailURL)
+                newtworkServise.downloadImage({ (imageData) in
+                    let image = UIImage(data: imageData as Data)
+                    print("image downloaded")
+                    DispatchQueue.main.async {
+                        self.offer.imageID = imageData as NSData
+                        self.iconImage.image = image
+                    }
+                    
+                })
+            }
+        }else {
+            iconImage.image = UIImage(data: offer.imageID! as Data)
+        }
+        
+
+    }
 
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var foodNameLabel: UILabel!
