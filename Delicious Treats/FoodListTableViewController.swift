@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import moa
 
-class FoodListTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FoodListTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UINavigationControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -47,6 +47,9 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "back", style: .done, target: self, action: #selector(FoodListTableViewController.backBtn))
+
+        
         managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
         performFetch()
         
@@ -54,6 +57,10 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         print(categoryID)
 
+    }
+    
+    func backBtn(){
+        dismiss(animated: true, completion: nil)
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -113,8 +120,12 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
         
         //cell.iconImage.moa.errorImage  = UIImage(named: "Test")
         //cell.iconImage.moa.url = importantOffers[indexPath.row].url
-        let image = UIImage(data: importantOffers[indexPath.row].imageID! as Data)
-        cell.iconImage.image = image
+        
+        if importantOffers[indexPath.row].imageID != nil{
+            cell.iconImage.image = UIImage(data: importantOffers[indexPath.row].imageID! as Data)
+        }else {
+            cell.iconImage.image = UIImage(named: "question")
+        }
         cell.foodNameLabel.text = importantOffers[indexPath.row].name
         cell.weightLabel.text = importantOffers[indexPath.row].weight
         cell.costLabel.text = importantOffers[indexPath.row].price! + " RUB"
@@ -178,7 +189,17 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
                 controller.price = importantOffers[indexPath.row].price!
                 controller.weight = importantOffers[indexPath.row].weight!
                 controller.url = importantOffers[indexPath.row].url!
-                controller.imageData = importantOffers[indexPath.row].imageID!
+                if let image = importantOffers[indexPath.row].imageID {
+                    controller.imageData = image
+                    controller.contentMode = UIViewContentMode.scaleAspectFit
+                }else {
+                    //Если до сих пор картинка не загружена, передаем вопрос
+                    let image = UIImagePNGRepresentation(UIImage(named: "question")!)
+                    controller.imageData = image as! NSData
+                    //content mode для вопроса должен быть таким, чтобы его не ратягивало 
+                    controller.contentMode = UIViewContentMode.scaleAspectFill
+                    controller.imageIsHiden = false
+                }
             }
         }
     }
@@ -208,7 +229,9 @@ extension FoodListTableViewController: NSFetchedResultsControllerDelegate {
             print("*** NSFetchedResultsChangeUpdate (object)")
             if let cell = tableView.cellForRow(at: indexPath!)
                 as? FoodListTableViewCell {
-                cell.iconImage.image = UIImage(named: "Test")
+                importantOffers[(indexPath?.row)!].imageID = fetchedOfferResultsController.object(at: indexPath!).imageID
+                let image = UIImage(data: importantOffers[(indexPath?.row)!].imageID! as Data)
+                cell.iconImage.image = image
                 cell.foodNameLabel.text = importantOffers[(indexPath?.row)!].name
                 cell.weightLabel.text = importantOffers[(indexPath?.row)!].weight
                 cell.costLabel.text = importantOffers[(indexPath?.row)!].price! + " RUB"

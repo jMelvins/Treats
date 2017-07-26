@@ -11,9 +11,14 @@ import UIKit
 class FoodDiscriptionViewController: UIViewController {
 
     @IBOutlet weak var popUpView: UIView!
-    @IBOutlet weak var indexPathLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var weightLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var imageNotLoadedLabel: UILabel!
     
+    var imageIsHiden = true
     var name = ""
     var id = ""
     var desc = ""
@@ -21,6 +26,7 @@ class FoodDiscriptionViewController: UIViewController {
     var weight = ""
     var url = ""
     var imageData = NSData()
+    var contentMode = UIViewContentMode(rawValue: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +36,11 @@ class FoodDiscriptionViewController: UIViewController {
         
         let image = UIImage(data: imageData as Data)
         iconImage.image = image
-        indexPathLabel.text = name + "  " + id + "  " + desc + "  " + price + "  " + weight + "  " + url
+        nameLabel.text = name
+        weightLabel.text = weight
+        priceLabel.text = price + " RUB"
+        descriptionLabel.text = desc
+        imageNotLoadedLabel.isHidden = imageIsHiden
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(sender:)))
         self.view.addGestureRecognizer(tap)

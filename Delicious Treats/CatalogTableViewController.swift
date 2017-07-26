@@ -35,19 +35,25 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
             print("Couldnt load data from database \(error.localizedDescription)")
         }
         
+        //Поменять этот метод не на говнокод
         if !categoryEntity.isEmpty{
             writeInCategoryStruct()
         }else {
             xmlGetter = XMLGetter(delegate: self)
             xmlGetter.performParseFromLink()
         }
-
-
+        
         if self.revealViewController() != nil {
             menuBarButton.target = self.revealViewController()
             menuBarButton.action = #selector(SWRevealViewController.revealToggle(_:))
             self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -69,6 +75,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
     // TODO: - Сделать сохранине картинок в CoreData
     
     var imageData = NSData()
+    var counter = 0
     func loadImage(_ urlString: String){
         
         let url:URL = URL(string: urlString)!
@@ -83,10 +90,49 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
             
             let imageData = try? Data(contentsOf: Url!)
             self.imageData = imageData! as NSData
+            print("\(self.counter) image downloaded")
+            self.counter += 1
         }
         task.resume()
     }
 
+    func downloadAndSaveInCoreData(objectToSave: ParsedOffer){
+        let entityItem = Offer(context: self.managedObjectContext)
+        entityItem.id = objectToSave.id
+        entityItem.name = objectToSave.name
+        if !objectToSave.description.isEmpty{
+            entityItem.desc = objectToSave.description
+        }
+        entityItem.price = objectToSave.price
+        entityItem.weight = objectToSave.weight
+        entityItem.url = objectToSave.pictureURL
+ 
+        let url:URL = URL(string: entityItem.url!)!
+        let session = URLSession.shared
+        
+        let task = session.downloadTask(with: url) {
+            (Url: URL?, respone: URLResponse?, error: Error?) in
+            guard let _:URL = Url, let _:URLResponse = respone, error == nil else {
+                print("error")
+                return
+            }
+            
+            let imageData = try? Data(contentsOf: Url!)
+            entityItem.imageID = imageData as! NSData
+            
+            print("\(self.counter) image downloaded")
+            self.counter += 1
+            
+            do {
+                try self.managedObjectContext.save()
+            }catch{
+                print("Couldnt save data \(error.localizedDescription)")
+            }
+
+        }
+        task.resume()
+
+    }
     
     
     // MARK: - XMLGetter
@@ -94,24 +140,25 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
         parsedOfferStruct = offers
         
         DispatchQueue.global(qos: .default).async {
-            for object in self.parsedOfferStruct{
-                let entityItem = Offer(context: self.managedObjectContext)
-                entityItem.id = object.id
-                entityItem.name = object.name
-                if !object.description.isEmpty{
-                    entityItem.desc = object.description
-                }
-                entityItem.price = object.price
-                entityItem.weight = object.weight
-                entityItem.url = object.pictureURL
-                self.loadImage(entityItem.url!)
-                entityItem.imageID = self.imageData
+            for object in offers{
+                self.downloadAndSaveInCoreData(objectToSave: object)
+//                let entityItem = Offer(context: self.managedObjectContext)
+//                entityItem.id = object.id
+//                entityItem.name = object.name
+//                if !object.description.isEmpty{
+//                    entityItem.desc = object.description
+//                }
+//                entityItem.price = object.price
+//                entityItem.weight = object.weight
+//                entityItem.url = object.pictureURL
+//                self.loadImage(entityItem.url!)
+//                entityItem.imageID = self.imageData
             }
-            do {
-                try self.managedObjectContext.save()
-            }catch{
-                print("Couldnt save data \(error.localizedDescription)")
-            }
+//            do {
+//                try self.managedObjectContext.save()
+//            }catch{
+//                print("Couldnt save data \(error.localizedDescription)")
+//            }
         }
         
     }
@@ -168,7 +215,8 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "FoodList" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
-                let controller = segue.destination as! FoodListTableViewController
+                let navVC = segue.destination as! UINavigationController
+                let controller = navVC.viewControllers.first as! FoodListTableViewController
                 //controller.offersArray = parsedOfferStruct
                 controller.categoryName = parsedCategoryStruct[indexPath.row].categoryName
                 controller.categoryID = parsedCategoryStruct[indexPath.row].categoryID
