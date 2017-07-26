@@ -13,6 +13,11 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
     
     @IBOutlet weak var menuBarButton: UIBarButtonItem!
     
+    @IBOutlet var hudView: UIView!
+    @IBOutlet weak var hudViewLabel: UILabel!
+    @IBOutlet weak var hudViewSpinner: UIActivityIndicatorView!
+    @IBOutlet weak var hudViewImage: UIImageView!
+    
     var parsedOfferStruct = [ParsedOffer]()
     var parsedCategoryStruct = [ParsedCategory]()
     var xmlGetter: XMLGetter!
@@ -22,7 +27,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        hudView.layer.cornerRadius = 10
         
         managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
@@ -35,12 +40,15 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
             print("Couldnt load data from database \(error.localizedDescription)")
         }
         
-        //Поменять этот метод не на говнокод
+        //Поменять этот метод на не говнокод
         if !categoryEntity.isEmpty{
             writeInCategoryStruct()
+            animateIn(text: "Loaded", spinnerIsActive: false)
+            animateOut()
         }else {
             xmlGetter = XMLGetter(delegate: self)
             xmlGetter.performParseFromLink()
+            animateIn(text: "Loading...", spinnerIsActive: true)
         }
         
         if self.revealViewController() != nil {
@@ -62,7 +70,42 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
         print("catalog did disappear")
     }
     
-    // MARK: - 
+    // MARK: - Hud View
+    
+    func animateIn(text: String, spinnerIsActive: Bool){
+        self.view.addSubview(hudView)
+        hudView.center = self.view.center
+        hudViewLabel.text = text
+        
+        hudView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        hudView.alpha = 0
+        if spinnerIsActive {
+            hudViewSpinner.startAnimating()
+            hudViewSpinner.isHidden = false
+            hudViewImage.isHidden = true
+        }else {
+            hudViewSpinner.stopAnimating()
+            hudViewSpinner.isHidden = true
+            hudViewImage.isHidden = false
+            hudViewImage.image = UIImage(named: "Checkmark")
+        }
+        
+        UIView.animate(withDuration: 0.4) {
+            self.hudView.alpha = 1
+            self.hudView.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+        }
+    }
+    
+    func animateOut(){
+        UIView.animate(withDuration: 0.6, animations: {
+            self.hudView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.hudView.alpha = 0
+        }) { (succes) in
+            self.hudView.removeFromSuperview()
+        }
+    }
+    
+    // MARK: - Local exemplar of CoreData Category entity
     
     func writeInCategoryStruct(){
         for index in 0...categoryEntity.count-1{
@@ -118,7 +161,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
             }
             
             let imageData = try? Data(contentsOf: Url!)
-            entityItem.imageID = imageData as! NSData
+            entityItem.imageID = imageData as NSData?
             
             print("\(self.counter) image downloaded")
             self.counter += 1
@@ -167,6 +210,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
         DispatchQueue.main.async {
             self.parsedCategoryStruct = categories
             self.tableView.reloadData()
+            self.animateOut()
         }
         
         for object in categories{

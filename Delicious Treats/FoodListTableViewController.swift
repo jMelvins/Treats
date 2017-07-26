@@ -195,7 +195,7 @@ class FoodListTableViewController: UIViewController, UITableViewDelegate, UITabl
                 }else {
                     //Если до сих пор картинка не загружена, передаем вопрос
                     let image = UIImagePNGRepresentation(UIImage(named: "question")!)
-                    controller.imageData = image as! NSData
+                    controller.imageData = image! as NSData
                     //content mode для вопроса должен быть таким, чтобы его не ратягивало 
                     controller.contentMode = UIViewContentMode.scaleAspectFill
                     controller.imageIsHiden = false

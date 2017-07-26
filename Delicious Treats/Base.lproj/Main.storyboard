@@ -186,10 +186,36 @@
                         <barButtonItem key="leftBarButtonItem" image="menu" id="Je4-kN-1Tb"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="hudView" destination="Foo-J5-MNS" id="NDP-F3-4jb"/>
+                        <outlet property="hudViewImage" destination="Y33-3Q-LVj" id="1tV-DS-aGk"/>
+                        <outlet property="hudViewLabel" destination="af9-X1-mAq" id="vlD-Ru-wg9"/>
+                        <outlet property="hudViewSpinner" destination="cxX-8Q-GdI" id="VK5-tA-6CI"/>
                         <outlet property="menuBarButton" destination="Je4-kN-1Tb" id="rcU-I8-XCl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PKt-bO-2pN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="Foo-J5-MNS">
+                    <rect key="frame" x="0.0" y="0.0" width="139" height="109"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="cxX-8Q-GdI">
+                            <rect key="frame" x="51" y="30" width="37" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="af9-X1-mAq">
+                            <rect key="frame" x="7" y="75" width="124" height="21"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="Y33-3Q-LVj">
+                            <rect key="frame" x="34" y="5" width="70" height="70"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="2853.75" y="-351.76056338028167"/>
         </scene>
@@ -411,6 +437,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Checkmark" width="48" height="48"/>
         <image name="menu" width="22" height="22"/>
         <image name="question" width="512" height="512"/>
         <image name="Каталог" width="108" height="111"/>
