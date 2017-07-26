@@ -31,7 +31,6 @@ class FoodListTableViewCell: UITableViewCell {
                     let image = UIImage(data: imageData as Data)
                     print("image downloaded")
                     DispatchQueue.main.async {
-                        self.offer.imageID = imageData as NSData
                         self.iconImage.image = image
                     }
                     
