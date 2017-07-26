@@ -22,6 +22,9 @@ class MenuViewController: UITableViewController {
     }
     
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     /*
     // MARK: - Navigation
 
