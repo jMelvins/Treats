@@ -7,7 +7,7 @@ After you  launch  the app it starts download database of menu from server. It m
 ![Alt Text](https://thumbs.gfycat.com/FearfulCourageousAmazonparrot-size_restricted.gif)
 
 
-Great! Now you can find information about offers you are intrested in:
+Great! Now you can find information about offers you are interested in:
 
 ![Alt Text](https://thumbs.gfycat.com/AmbitiousShockedHeifer-size_restricted.gif)
 
