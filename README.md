@@ -19,6 +19,6 @@ Also You can use map. There are several checkmarks on this to show you addresses
 
 ![Alt Text](https://thumbs.gfycat.com/ScentedMinorDipper-size_restricted.gif)
 
-Next time you start the application, you do not need to download the data again, it's saved in the database when it's the first launching!
+Next time you start the application, the data won't be downloaded again, it's saved in the database when it's the first launching!
 
 ![Alt Text](https://thumbs.gfycat.com/GoldenSlushyAbyssiniancat-size_restricted.gif)
