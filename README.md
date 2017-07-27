@@ -15,7 +15,7 @@ But if a picture is still not downloaded, you will see a special notification. D
 
 ![Alt Text](https://thumbs.gfycat.com/ForkedUnderstatedArchaeocete-size_restricted.gif)
 
-Also You can use map. There are several checkmarks on this to show you addresses.	As well you ca determine your location here.
+Also You can use map. There are several checkmarks on this to show you addresses.	As well you can determine your location here.
 
 ![Alt Text](https://thumbs.gfycat.com/ScentedMinorDipper-size_restricted.gif)
 
