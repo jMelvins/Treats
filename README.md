@@ -15,10 +15,10 @@ But if a picture is still not downloaded, you will see a special notification. D
 
 ![Alt Text](https://thumbs.gfycat.com/ForkedUnderstatedArchaeocete-size_restricted.gif)
 
-Also You can use map. There are several checkmarks on this to show you addresses.	As well you can determine your location here.
+Also You can use map. There are several checkmarks on this to show you addresses.	You can determine your location here as well.
 
 ![Alt Text](https://thumbs.gfycat.com/ScentedMinorDipper-size_restricted.gif)
 
-The next time you start the application, you do not need to download the data again, they will be saved in the local database!
+Next time you start the application, you do not need to download the data again, it's saved in the database when it's the first launching!
 
 ![Alt Text](https://thumbs.gfycat.com/GoldenSlushyAbyssiniancat-size_restricted.gif)
