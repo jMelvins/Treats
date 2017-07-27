@@ -2,7 +2,7 @@
 ## Delicious Treats is the menu restaurant app. Here you can find a treats , read about this, see the price and find nearest restaurants.
 
 
-After you  launch  the app it starts download database of menu from server. It may takes time, so be patient:
+After you launch the app it starts downloading the database of a menu from the server. It may take time, so be patient:
 
 ![Alt Text](https://thumbs.gfycat.com/FearfulCourageousAmazonparrot-size_restricted.gif)
 
