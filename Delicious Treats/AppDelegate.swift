@@ -6,6 +6,7 @@
 //  Copyright © 2017 Vladislav Shilov. All rights reserved.
 //
 
+
 import UIKit
 import CoreData
 import GoogleMaps
@@ -25,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             return paths[0]
         }()
+        print("Path: ")
         print(applicationDocumentsDirectory)
         
         // Override point for customization after application launch.
