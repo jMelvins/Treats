@@ -159,7 +159,7 @@ extension FoodListTableViewController: NSFetchedResultsControllerDelegate {
             tableView.deleteRows(at: [indexPath!], with: .fade)
         case .update:
             print("*** NSFetchedResultsChangeUpdate (object)")
-            if let cell = tableView.cellForRow(at: indexPath!) {
+            if tableView.cellForRow(at: indexPath!) != nil {
                 importantOffers[(indexPath?.row)!].imageID = fetchedOfferResultsController.object(at: indexPath!).imageID
 //                let image = UIImage(data: importantOffers[(indexPath?.row)!].imageID! as Data)
 //                cell.iconImage.image = image

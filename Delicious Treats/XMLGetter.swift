@@ -19,7 +19,6 @@ protocol CustomXMLGetterDelegate {
 struct ParsedCategory {
     var categoryID: String
     var categoryName: String
-    var categoryDate: Date
 }
 
 struct ParsedOffer {
@@ -92,15 +91,8 @@ class XMLGetter{
                         self.categoryID = categories.attributes["id"]!
                         self.categoryName = categories.value!
                         
-                        //Этот костыль для прваильной сортировки, когда достаем данные из CoreData
-                        let timeInteval: TimeInterval = Double(self.categoryID)! * 1000
-                        //TimeInterval = categories.attributes["id"]! * 10000
-                        self.categoryDate = Date(timeIntervalSince1970: timeInteval)
-                        
-                        //-----------------------------------------------------------
-                        
                         //Добавление в структуру
-                        let newCategory = ParsedCategory(categoryID: self.categoryID, categoryName: self.categoryName, categoryDate: self.categoryDate)
+                        let newCategory = ParsedCategory(categoryID: self.categoryID, categoryName: self.categoryName)
                         //let newCategory = ParsedCategory(category: categories)
                         
                         self.parsedCategoryArray.append(newCategory)
@@ -113,6 +105,8 @@ class XMLGetter{
                         self.offerPrice = categories.children[2].value!
                         if let desc = categories.children[3].value{
                             self.offerDescription = desc
+                        }else {
+                            self.offerDescription = "There isn't discription for this product."
                         }
                         self.offerPictureURL = categories.children[4].value!
                         self.offerID = categories.children[5].value!
