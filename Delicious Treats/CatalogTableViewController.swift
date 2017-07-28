@@ -1,11 +1,10 @@
- //
+//
 //  CatalogTableViewController.swift
 //  Delicious Treats
 //
 //  Created by Vladislav Shilov on 21.07.17.
 //  Copyright © 2017 Vladislav Shilov. All rights reserved.
 //
-
 import UIKit
 import CoreData
 
@@ -30,7 +29,15 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
         hudView.layer.cornerRadius = 10
         
         managedObjectContext = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
-        loadFromCoreData()
+    
+        let presentRequest:NSFetchRequest<Category> = Category.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "date", ascending: true)
+        presentRequest.sortDescriptors = [sortDescriptor]
+        do{
+            self.categoryEntity = try self.managedObjectContext.fetch(presentRequest)
+        }catch{
+            print("Couldnt load data from database \(error.localizedDescription)")
+        }
         
         //Поменять этот метод на не говнокод
         if !categoryEntity.isEmpty{
@@ -50,17 +57,16 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
         }
     }
     
-    func loadFromCoreData(){
-        let presentRequest:NSFetchRequest<Category> = Category.fetchRequest()
-//        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
-//        presentRequest.sortDescriptors = [sortDescriptor]
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
-        do{
-            self.categoryEntity = try self.managedObjectContext.fetch(presentRequest)
-        }catch{
-            print("Couldnt load data from database \(error.localizedDescription)")
-        }
 
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        
+        print("catalog did disappear")
     }
     
     // MARK: - Hud View
@@ -102,7 +108,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
     
     func writeInCategoryStruct(){
         for index in 0...categoryEntity.count-1{
-            let tempCat = ParsedCategory(categoryID: categoryEntity[index].id!, categoryName: categoryEntity[index].name!)
+            let tempCat = ParsedCategory(categoryID: categoryEntity[index].id!, categoryName: categoryEntity[index].name!, categoryDate: categoryEntity[index].date! as Date)
             parsedCategoryStruct.append(tempCat)
         }
     }
@@ -143,6 +149,7 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
             let entityItem = Category(context: managedObjectContext)
             entityItem.id = object.categoryID
             entityItem.name = object.categoryName
+            entityItem.date = object.categoryDate as NSDate
         }
         do {
             try managedObjectContext.save()
@@ -171,13 +178,12 @@ class CatalogTableViewController: UITableViewController, CustomXMLGetterDelegate
         return parsedCategoryStruct.count
     }
 
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CatalogTableViewCell
         
-        let index = parsedCategoryStruct[indexPath.row]
-        
-        cell?.iconImage.image = UIImage(named: "\(index.categoryID)")
-        cell?.categoryNameLabel.text = index.categoryName
+        cell?.iconImage.image = UIImage(named: "\(indexPath.row+1)")
+        cell?.categoryNameLabel.text = parsedCategoryStruct[indexPath.row].categoryName
 
         return cell!
     }
