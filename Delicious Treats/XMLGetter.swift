@@ -113,6 +113,8 @@ class XMLGetter{
                         self.offerPrice = categories.children[2].value!
                         if let desc = categories.children[3].value{
                             self.offerDescription = desc
+                        }else {
+                            self.offerDescription = "There isn't discription for this product."
                         }
                         self.offerPictureURL = categories.children[4].value!
                         self.offerID = categories.children[5].value!
